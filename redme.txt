@@ -1,0 +1,29 @@
+no nos toma la tarjeta en heroku, y ya probamos 2
+
+nos falta la lupita- en buscar
+nos falta el id de perfil- ruta, ver en ver ejs de logouut, en el boton q dirijir al perfil, en el ejs de perfil ver q tambien tenga id en su form- action, ver si necesita cambios el controler
+ver bien (testear en otra compu, porq la de dani anda lenta) lo de editar perfil, q para ver los cambios tengo q salir de sesion y volver a entrar para verlos, sin embargo, en la base de dato se me aplican los cambios al toque.
+
+
+flooor
+le pongo a create app
+siii
+decime
+plis
+t-t
+lo ves
+y me guias
+plis
+el video lo tengo
+ahi lo paso
+jajaja se me tildo
+todo
+noc si lo q ponga bien 
+jajajajja
+se
+owww
+buinu
+ptrp intento
+dime 
+q
+jajjaja es verda
