@@ -14,12 +14,12 @@
         <h1 class="b-de-vuelta">INICIAR SESIÓN</h1>
         
 
-
-        <form action="/login" method="POST">
-
+        <form action="/login" method="POST" id="form">
+            <script src="/public/js/formularioL.js"></script>
             <div class="login">
-                    <label for="e-mail">Nombre de usurio o correo electrónico</label>
-                    <input type="email" name="email" id="e-mail" placeholder="Ingrese su usuario o email" required>
+
+                    <label for="e-mail">Ingrese su correo electrónico</label>
+                    <input type="email" name="email" id="e-mail" placeholder="Ingrese su email" >
 
                     <%  if (locals.errors && errors.email) {  %>
                         <div class="text-danger">
@@ -28,8 +28,14 @@
                         <% } %>  
                 
                     <label for="contraeña">Contraseña</label>
-                    <input type="password" name="password" id="contraeña" placeholder="Ingrese su contraseña" required>
+                    <input type="password" name="password" id="contraeña" placeholder="Ingrese su contraseña" >
                     
+
+                    <% if (locals.errors && errors.password) { %>
+                        <div class="text-danger">
+                            <%= errors.password.msg %> 
+                        </div>
+                    <% } %>
 
 
                     <div class="texto">
@@ -39,7 +45,7 @@
                     </div>
 
 
-                    <button class="iniciar" type="submit">Ingresar</a> </button>
+                    <button class="iniciar" id="button" type="submit">Ingresar</button>
                 
 
                 <div class="avisos">
