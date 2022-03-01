@@ -15,11 +15,12 @@
         
 
         <form action="/login" method="POST" id="form">
-            <script src="/public/js/formularioL.js"></script>
+        
             <div class="login">
+                <script src="/js/formularioL.js"></script>
 
                     <label for="e-mail">Ingrese su correo electrónico</label>
-                    <input type="email" name="email" id="e-mail" placeholder="Ingrese su email" >
+                    <input type="email" name="email" id="email" placeholder="Ingrese su email" >
 
                     <%  if (locals.errors && errors.email) {  %>
                         <div class="text-danger">
@@ -28,7 +29,7 @@
                         <% } %>  
                 
                     <label for="contraeña">Contraseña</label>
-                    <input type="password" name="password" id="contraeña" placeholder="Ingrese su contraseña" >
+                    <input type="password" name="password" id="password" placeholder="Ingrese su contraseña" >
                     
 
                     <% if (locals.errors && errors.password) { %>
@@ -45,8 +46,27 @@
                     </div>
 
 
-                    <button class="iniciar" id="button" type="submit">Ingresar</button>
+                    <button class="iniciar" id="submit" type="submit">Ingresar</button>
+                </form>
                 
+                    <!-- pruebas de validacion front
+                    <script>
+                        document.querySelector("#form").querySelector('#submit', validar);
+                
+                        function validar(evt) {
+                            let cla1 = document.querySelector("#email").value;
+                            let cla2 = document.querySelector("#password").value;
+                            if (cla1 != cla2) {
+                                alert('Las claves ingresadas son distintas');
+                                evt.preventDefault();
+                            }if(cla1 != ' ') {
+                                alert('No puede estar vacío');
+                                evt.preventDefault();
+                            }
+                        }
+                    </script>-->
+
+
 
                 <div class="avisos">
 
@@ -70,7 +90,6 @@
 
             </div>
             
-        </form>
     </div>
 
 </main>

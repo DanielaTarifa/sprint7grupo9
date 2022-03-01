@@ -127,8 +127,9 @@ const usersController={
                     res.render('./users/login', {
                         errors: {
                             email: {
-                                msg: 'No se encuentra registrado este email'
+                                msg: 'Debes escribir tu correo electrónico'
                             }
+                            
                         }
                     });
                 }
