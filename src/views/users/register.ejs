@@ -22,7 +22,7 @@
                 <div class="register">
 
                     <h1 class="registrate">CREAR CUENTA</h1><br>
-                        <script src="/public/js/registerV.js"></script>
+                        <script src="/js/registerV.js"></script>
                             <label ></label>
                             <input 
                             type="text" 
@@ -62,7 +62,7 @@
                             type="text" 
                             class="reg <%= locals.errors && errors.nombreDeUsuario ? 'is-invalid' : null %>" 
                             name="nombreDeUsuario" 
-                            id="Nombre de usuario" 
+                            id="nombreDeUsuario" 
                             placeholder="Ingresa tu nombre de usuario" 
                             value="<%= locals.oldData ? oldData.nombreDeUsuario : null %>"
                             >
@@ -93,7 +93,7 @@
                             type="email" 
                             class="reg" 
                             name="email" 
-                            id="e-mail" 
+                            id="email" 
                             placeholder="Ingresa tu email" 
                             value="<%= locals.oldData ? oldData.email : null %>"
                             >
@@ -125,7 +125,7 @@
                             type="password" 
                             class="reg" 
                             name="password" 
-                            id="contraeña" 
+                            id="password" 
                             placeholder="Crea una contraseña" 
                             value="<%= locals.oldData ? oldData.password : null %>"
                             >
@@ -136,26 +136,25 @@
                             <% } %>
 
                         
-                            <label for="contraeña"></label>
+                            <label for="password"></label>
                             <input 
                             type="password" 
                             class="reg" 
-                            name="otraPassword" 
-                            id="contraeña" 
+                            name="password" 
+                            id="password" 
                             placeholder="Confirmar Contraseña" 
                             value="<%= locals.oldData ? oldData.otraPassword : null %>"
                             >
-                            <% if (locals.errors && errors.otraPassword) { %>
+                            <% if (locals.errors && errors.password) { %>
                                 <div class="text-danger">
-                                    <%= errors.otraPassword.msg %> 
+                                    <%= errors.password.msg %> 
                                 </div>
                             <% } %>
                             
 
-                </form>
 
-                        <button  class="reg2" type="submit" href="/" ><a >Registrate</a> </button>
-                    
+                        <button  class="reg2" id="submit" type="submit" href="/" ><a >Registrate</a> </button>
+                    </form>
                 
                     <div class="avisos">
 

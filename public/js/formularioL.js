@@ -1,6 +1,7 @@
 window.addEventListener("load", function () {
     let uEmail = document.querySelector("#email");
     let uPassword = document.querySelector("#password");
+    
 
     uEmail.addEventListener("click", function (e) {
         e.preventDefault();
@@ -13,22 +14,10 @@ window.addEventListener("load", function () {
         e.preventDefault();
         if (uPassword.value == "") {
             alert("La constraseña no puede estar vacía");
+        }else if (uPassword.value.length < 8) {
+            alert("La contraseña debe tener al menos 8 caracteres");
         }
     })
-
-  /*  document.querySelector("#form").querySelector('#submit', validar);
-                
-function validar(evt) {
-    let cla1 = document.querySelector("#email").value;
-    let cla2 = document.querySelector("#password").value;
-    if (cla1 != cla2) {
-        alert('Las claves ingresadas son distintaaaaaaas');
-        evt.preventDefault();
-    }if(cla1 != ' ') {
-        alert('No puede estar vaaaaaaaaaaaaacío');
-        evt.preventDefault();
-    }
-}*/
 
 
 });
