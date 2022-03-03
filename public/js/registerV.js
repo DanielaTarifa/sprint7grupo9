@@ -34,10 +34,10 @@ window.addEventListener("load", function () {
     })
 
 
-    uAvatar.addEventListener("click", function (e) {
+    uAvatar.addEventListener("change", function (e) {
         e.preventDefault();
-        if (uAvatar.value =="") {
-            alert("Debe elegir una foto de perfil formato (JPG, JPEG, PNG)");
+        if (uAvatar.file != "jpg", "jpeg", "png") {
+            alert("El formato del archivo debe ser válido (JPG, JPEG, PNG)");
         }
     })
 
@@ -54,7 +54,6 @@ window.addEventListener("load", function () {
             alert("Debe escribir su correo electrónico");
         }
     })
-
 
     uPassword.addEventListener("click", function (e) {
         e.preventDefault();
