@@ -15,15 +15,15 @@
     
         <div class="formulario">
             
-            <form method="POST" action="/register" enctype="multipart/form-data">
+            <form method="POST" action="/register" class="form" id="form" enctype="multipart/form-data">
 
             
 
                 <div class="register">
 
                     <h1 class="registrate">CREAR CUENTA</h1><br>
-                        <script src="/js/registerV.js"></script>
-                            <label ></label>
+                        
+                            <label for="nombre" ></label>
                             <input 
                             type="text" 
                             class="reg <%= locals.errors && errors.nombre ? 'is-invalid' : null %>" 
@@ -32,6 +32,7 @@
                             placeholder="Ingresa tu nombre" 
                             value="<%= locals.oldData ? oldData.nombre : null %>"
                             >
+                            <small class="errors"></small>
                             
                             <% if (locals.errors && errors.nombre) { %>
                                 <div class="text-danger">
@@ -49,6 +50,7 @@
                             placeholder="Ingresa tu apellido" 
                             value="<%= locals.oldData ? oldData.apellido : null %>"
                             >
+                            <small class="errors"></small>
                             <% if (locals.errors && errors.apellido) { %>
                                 <div class="text-danger">
                                     <%= errors.apellido.msg %> 
@@ -62,10 +64,11 @@
                             type="text" 
                             class="reg <%= locals.errors && errors.nombreDeUsuario ? 'is-invalid' : null %>" 
                             name="nombreDeUsuario" 
-                            id="nombreDeUsuario" 
+                            id="Nombre de usuario" 
                             placeholder="Ingresa tu nombre de usuario" 
                             value="<%= locals.oldData ? oldData.nombreDeUsuario : null %>"
                             >
+                            <small class="errors"></small>
                             <% if (locals.errors && errors.nombreDeUsuario) { %>
                                 <div class="text-danger">
                                     <%= errors.nombreDeUsuario.msg %> 
@@ -81,6 +84,7 @@
                             id="avatar"
                             value="<%= locals.oldData ? oldData.avatar : null %>" 
                             >
+                            <small class="errors"></small>
                             <% if (locals.errors && errors.avatar) { %>
                                 <div class="text-danger">
                                     <%= errors.avatar.msg %> 
@@ -93,10 +97,11 @@
                             type="email" 
                             class="reg" 
                             name="email" 
-                            id="email" 
+                            id="e-mail" 
                             placeholder="Ingresa tu email" 
                             value="<%= locals.oldData ? oldData.email : null %>"
                             >
+                            <small class="errors"></small>
                             <% if (locals.errors && errors.email) { %>
                                 <div class="text-danger">
                                     <%= errors.email.msg %> 
@@ -113,6 +118,7 @@
                             placeholder="Celular/Teléfono" 
                             value="<%= locals.oldData ? oldData.tel : null %>"
                             >
+                            <small class="errors"></small>
                             <% if (locals.errors && errors.tel) { %>
                                 <div class="text-danger">
                                     <%= errors.tel.msg %> 
@@ -121,14 +127,15 @@
 
 
                             <label for="password"></label>
-                            <input 
-                            type="password" 
+                            <input type="password" 
                             class="reg" 
                             name="password" 
-                            id="password" 
+                            id="contraeña" 
                             placeholder="Crea una contraseña" 
                             value="<%= locals.oldData ? oldData.password : null %>"
                             >
+                          
+                             <small class="errors"></small>
                             <% if (locals.errors && errors.password) { %>
                                 <div class="text-danger">
                                     <%= errors.password.msg %> 
@@ -136,25 +143,27 @@
                             <% } %>
 
                         
-                            <label for="password"></label>
+                            <label for="contraeña"></label>
                             <input 
                             type="password" 
                             class="reg" 
-                            name="password" 
-                            id="password" 
+                            name="otraPassword" 
+                            id="contraeña" 
                             placeholder="Confirmar Contraseña" 
                             value="<%= locals.oldData ? oldData.otraPassword : null %>"
                             >
-                            <% if (locals.errors && errors.password) { %>
+                            <small class="errors"></small>
+                            <% if (locals.errors && errors.otraPassword) { %>
                                 <div class="text-danger">
-                                    <%= errors.password.msg %> 
+                                    <%= errors.otraPassword.msg %> 
                                 </div>
                             <% } %>
                             
 
+                </form>
 
-                        <button  class="reg2" id="submit" type="submit" href="/" ><a >Registrate</a> </button>
-                    </form>
+                        <button  class="reg2" type="submit" href="/" ><a >Registrate</a> </button>
+                    
                 
                     <div class="avisos">
 
@@ -173,3 +182,5 @@
     
 </body>
 </html>
+
+<script src="/js/registerV.js"></script>

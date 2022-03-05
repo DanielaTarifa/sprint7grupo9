@@ -8,19 +8,19 @@
 
     <%- include('../partials/header') %> 
 
+
 <main class="main-login">
     <div class="formulario">
 
         <h1 class="b-de-vuelta">INICIAR SESIÓN</h1>
         
-
-        <form action="/login" method="POST" id="form">
+        <form action="/login" method="POST" class="form" id="form">
         
             <div class="login">
-                <script src="/js/formularioL.js"></script>
 
-                    <label for="e-mail">Ingrese su correo electrónico</label>
-                    <input type="email" name="email" id="email" placeholder="Ingrese su email" >
+                    <label for="email">Ingrese su correo electrónico</label>
+                    <input type="email"  id="email" name="email" placeholder="Ingrese su email" >
+                    <small class="errors"></small>
 
                     <%  if (locals.errors && errors.email) {  %>
                         <div class="text-danger">
@@ -28,8 +28,9 @@
                         </div>
                         <% } %>  
                 
-                    <label for="contraeña">Contraseña</label>
+                    <label for="password">Contraseña</label>
                     <input type="password" name="password" id="password" placeholder="Ingrese su contraseña" >
+                    <small class="errors"></small>
                     
 
                     <% if (locals.errors && errors.password) { %>
@@ -45,51 +46,34 @@
                                 Recordarme</label>
                     </div>
 
+            
 
-                    <button class="iniciar" id="submit" type="submit">Ingresar</button>
-                </form>
-                
-                    <!-- pruebas de validacion front
-                    <script>
-                        document.querySelector("#form").querySelector('#submit', validar);
-                
-                        function validar(evt) {
-                            let cla1 = document.querySelector("#email").value;
-                            let cla2 = document.querySelector("#password").value;
-                            if (cla1 != cla2) {
-                                alert('Las claves ingresadas son distintas');
-                                evt.preventDefault();
-                            }if(cla1 != ' ') {
-                                alert('No puede estar vacío');
-                                evt.preventDefault();
-                            }
-                        }
-                    </script>-->
+                    <button class="iniciar" type="submit">Ingresar</button>
 
 
+                    <div class="avisos">
 
-                <div class="avisos">
-
-                    <div class="olvidar">
-                        <a href="/recuperar" class="olv"> - Olvidé mi contraseña -</a>
+                        <div class="olvidar">
+                            <a href="/recuperar" class="olv"> - Olvidé mi contraseña -</a>
                         
                         </div>
-                    <div class="cuenta-regist">
-                    <p class="b-verte">¿Aún no tienes una cuenta? </p> 
+                    
+                        <div class="cuenta-regist">
+                                <p class="b-verte">¿Aún no tienes una cuenta? </p> 
 
-                    <a href="/register" class="regist">Regístrate</a>
+                            <a href="/register" class="regist">Regístrate</a>
+                        </div>
+
+                    
+                    </div> 
+                
+                    <div class="logoL">
+                            <img src="/img/este_si3.png" width="95" alt="LogoMPC">
                     </div>
 
                     
-                    </div>
-                    <div class="logoL">
-                        <img src="/img/este_si3.png" width="95" alt="LogoMPC">
-                    </div>
-
-                </div>
-
             </div>
-            
+        </form>
     </div>
 
 </main>
@@ -98,3 +82,5 @@
     
 </body>
 </html>
+
+<script src="/js/formularioL.js"></script>

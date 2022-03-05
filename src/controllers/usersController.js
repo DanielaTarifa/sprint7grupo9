@@ -29,7 +29,7 @@ const usersController={
 
     delete: (req, res) =>{
         let userId = req.params.id;
-        User.destroy({where: {id: userId}}) 
+        Users.destroy({where: {id: userId}}) 
         .then(()=>{
             return res.redirect('/')})
         .catch(error => res.send(error)) 

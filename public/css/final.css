@@ -432,7 +432,7 @@ justify-content: space-between;
     justify-content: center;
     width: 80%;
     border-radius: 15px;
-    font-family: 'Zen Kurenaido', sans-serif;
+    font-family:'Courier New', Courier, monospace;
     padding: 3%;
 }
 
@@ -1701,4 +1701,14 @@ div.carrousel li {
     width: 100%;
     list-style: none;
 }
-/**********************************CARRUCEL***********************************
+/**********************************CARRUCEL***********************************/
+/*errores de form front*/
+.errors{
+    color: rgb(247, 249, 252);
+    font-style: oblique;
+    font-family:'Courier New', Courier, monospace;
+    font-size: 17px;
+    margin-top: 7px;
+    background-color: #2637a7;
+    border-radius: 2px;
+}
