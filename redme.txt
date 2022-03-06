@@ -1,5 +1,15 @@
-no nos toma la tarjeta en heroku, y ya probamos 2
+Compu mundo hiper mega red Tommy chips & asociados computer
+Trello memo
+https://trello.com/b/691TA76v/trabajo-integrador-sprint-6
 
+para acceder por login como comprador=
 
-nos falta el id de perfil- ruta, ver en ver ejs de logouut, en el boton q dirijir al perfil, en el ejs de perfil ver q tambien tenga id en su form- action, ver si necesita cambios el controler
-ver bien (testear en otra compu, porq la de dani anda lenta) lo de editar perfil, q para ver los cambios tengo q salir de sesion y volver a entrar para verlos, sin embargo, en la base de dato se me aplican los cambios al toque.
+° email: usuario@gmail.com
+
+° contraseña: cliente1234
+
+para acceder por login como administrador=
+
+° email: administrador@mpc.com
+
+° contraseña: mpc12345
