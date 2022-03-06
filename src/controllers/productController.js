@@ -162,6 +162,10 @@ const productController={
         })
     },
 
+    ayuda: (req, res) => { 
+        res.render('./products/ayuda');
+    }
+
 }
 
 module.exports=productController;

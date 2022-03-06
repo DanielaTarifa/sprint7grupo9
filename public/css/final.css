@@ -1712,3 +1712,11 @@ div.carrousel li {
     background-color: #2637a7;
     border-radius: 2px;
 }
+.ayuda22{
+    background-color: white;
+    justify-content: center;
+    border-radius: 10px;
+    font-family:'Zen Kurenaido', sans-serif;
+    padding: 3%;
+    font-size: 18px;
+}
