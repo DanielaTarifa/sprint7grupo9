@@ -158,12 +158,10 @@ const usersController={
             }
         })
         .then( () => {
-                req.session.user = req.body.nombre;
-                req.session.email = req.body.email;
-                req.session.imagen = req.file.filename;
+                
                 console.log(req.session)
                 
-                res.redirect("/");
+                res.redirect("/perfil");
         })
         
         .catch( error => {
