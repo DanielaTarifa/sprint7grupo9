@@ -3,6 +3,8 @@ const router= express.Router();
 
 let productController=require('../controllers/productController');
 const multer=require('multer')
+const path = require('path');
+const { body } = require('express-validator');
 
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -14,6 +16,9 @@ var storage = multer.diskStorage({
 })
 
 var upload = multer({ storage: storage })
+
+//middleware
+const validacionesCreate = require('../middlewares/creacionProdtValidacionMiddle.js');
 
 
 //home
@@ -31,13 +36,13 @@ router.get('/search', productController.search);
 //CRUD- 
 //crear
 router.get('/agregarProducto', productController.add);//add-crear
-router.post('/agregarProducto',upload.single("imagen"), productController.create);//create-guardado
+router.post('/agregarProducto',upload.single("imagen"), validacionesCreate, productController.create);//create-guardado
 //leer
 router.get('/allproducts',productController.listAdmi);//listado admi-alls
 router.get('/todos',productController.listClient);//listado admi-alls
 //modificar
 router.get('/editarProducto/:id', productController.edit);//editar
-router.put('/editarProducto/:id',upload.single("imagen"), productController.update);//actualizar
+router.put('/editarProducto/:id',upload.single("imagen"), validacionesCreate, productController.update);//actualizar
 //eliminar
 router.delete('/borrar/:id',productController.delete);
 

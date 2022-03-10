@@ -8,9 +8,10 @@
         <div class="edit-product-padre">
             <h2>Editar producto</h2>
 
-            <form action="/editarProducto/<%=producto.id%>?_method=put " method="POST" enctype="multipart/form-data">
+            <form action="/editarProducto/<%=producto.id%>?_method=put " method="POST" id="formuEditProduct" enctype="multipart/form-data">
                 <label for="name">Nombre del Producto</label>
                  <input class="rellenoAdd" type="text" name="nombre" id="nombre" value="<%= locals.oldData ? oldData.nombre : producto.name %>" >
+                <p class="errors"></p>
                  <% if (locals.errors && errors.nombre) { %>
                     <div class="text-danger">
                         <%= errors.nombre.msg %> 
@@ -21,6 +22,7 @@
                 <label for="price">Precio</label>
                 <input  class="rellenoAdd"type="number" name="precio" id="precio" 
                 value="<%= locals.oldData ? oldData.precio : producto.price %>" >
+                <p class="errors"></p>
                 <% if (locals.errors && errors.precio) { %>
                     <div class="text-danger">
                         <%= errors.precio.msg %> 
@@ -28,7 +30,7 @@
                 <% } %>
 
                 <label for="categorias">Categoría</label>
-                <select name="categorias" >
+                <select name="categorias" id="catego" >
                     <option value="">-Selecione una categoria-</option>
                     <%let guardadoSelecCatego= locals.oldData ? oldData.categorias : producto.categoryId %>
                     <% for( let i = 0; i < categorias.length; i++ ) { %>
@@ -46,6 +48,7 @@
                             <% } %>
                     <% } %>
                 </select>
+                <p class="errors"></p>
         <% if (locals.errors && errors.categorias) { %>
             <div class="text-danger">
                 <%= errors.categorias.msg %> 
@@ -62,7 +65,8 @@
                 id="descripcion" 
                 cols="10" rows="5"  
                  ><%= locals.oldData ? locals.oldData.descripcion : producto.description %></textarea>
-                <% if (locals.errors && errors.descripcion) { %>
+                 <p class="errors"></p>
+                 <% if (locals.errors && errors.descripcion) { %>
                     <div class="text-danger">
                         <%= errors.descripcion.msg %> 
                     </div>
@@ -76,7 +80,7 @@
                     name="imagen" 
                     id="imagen" 
                     value="<%= producto.img %>">
-                
+                    <p class="errors"></p>
                 <!-- <img src="/img/<%#=producto.img%>" alt="producto" width="100" class="product_img">-->
                 <% if (locals.errors && errors.imagen) { %>
                     <div class="text-danger">
@@ -87,7 +91,7 @@
             </div>
                 <br>
                 <label for="cuotas">Cuotas</label>
-                <select name="cuotas" >
+                <select name="cuotas" id="coutass">
                     
                     
                     <option value="">-Selecione una Cuota-</option>
@@ -105,6 +109,7 @@
                         <% } %>
                     <% } %>
                 </select>
+                <p class="errors"></p>
                 <% if (locals.errors && errors.cuotas) { %>
                     <div class="text-danger">
                         <%= errors.cuotas.msg %> 
@@ -114,6 +119,7 @@
                 
                 <label for="stock">stock</label>
                 <input  class="rellenoAdd"type="number" name="stock" id="stock" value="<%=locals.oldData ? oldData.stock :producto.stock%>" >
+                <p class="errors"></p>
                 <% if (locals.errors && errors.stock) { %>
                     <div class="text-danger">
                         <%= errors.stock.msg %> 
@@ -122,6 +128,7 @@
 
                 <label for="stockMinimo">stock minimo</label>
                 <input  class="rellenoAdd"type="number" name="stockMinimo" id="stockMinimo" value="<%=locals.oldData ? oldData.stockMinimo :producto.stockMin%>" >
+                <p class="errors"></p>
                 <% if (locals.errors && errors.stockMinimo) { %>
                     <div class="text-danger">
                         <%= errors.stockMinimo.msg %> 
@@ -130,6 +137,7 @@
 
                 <label for="stockMaximo">stock máximo</label>
                 <input  class="rellenoAdd"type="number" name="stockMaximo" id="stockMaximo" value="<%=locals.oldData ? oldData.stockMaximo :producto.stockMax%>" >
+                <p class="errors"></p>
                 <% if (locals.errors && errors.stockMaximo) { %>
                     <div class="text-danger">
                         <%= errors.stockMaximo.msg %> 
@@ -139,7 +147,7 @@
                 <label for="secciones">Sección</label>
                 <!-- <input  class="rellenoAdd" type="number" name="seccion" id="seccion">-->
                 
-                <select name="secciones" >
+                <select name="secciones" id="secciones">
                     
                     <option value="">-Selecione una sección-</option>
                     <% let guardadoSelectSecc= locals.oldData ? oldData.secciones : producto.sectionId%>
@@ -156,7 +164,7 @@
                         <% } %>
                     <% } %>
                 </select>
-
+                <p class="errors"></p>
                 <% if (locals.errors && errors.secciones) { %>
                     <div class="text-danger">
                         <%= errors.secciones.msg %> 
@@ -175,6 +183,7 @@
             <input  type="radio" name="visualizacion" id="visualizacion" value="0" checked required>no
         <% } %>
                 
+        <p class="errors"></p>
         <% if (locals.errors && errors.visualizacion) { %>
             <div class="text-danger">
                 <%= errors.visualizacion.msg %> 
@@ -187,8 +196,9 @@
 
         </div>
     </main>
+    <script src="/js/editProductValidaciones.js"></script>
 
-    
+    <%- include('../partials/footer') %> 
 </body>
 
 </html>

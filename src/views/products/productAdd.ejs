@@ -25,7 +25,7 @@
                     placeholder=" " 
                     value="<%= locals.oldData ? oldData.nombre : null %>"
                     >
-                      
+                    <p class="errors"></p>
                     <% if (locals.errors && errors.nombre) { %>
                         <div class="text-danger">
                             <%= errors.nombre.msg %> 
@@ -43,7 +43,7 @@
                     id="precio" 
                     value="<%= locals.oldData ? oldData.precio : null %>"
                     >
-                      
+                    <p class="errors"></p>
                     <% if (locals.errors && errors.precio) { %>
                         <div class="text-danger">
                             <%= errors.precio.msg %> 
@@ -61,7 +61,7 @@
                     </option>
                     <% } %>
                 </select>
-                  
+                <p class="errors"></p>
             <% if (locals.errors && errors.categorias) { %>
                 <div class="text-danger">
                     <%= errors.categorias.msg %> 
@@ -78,7 +78,7 @@
                     cols="10" rows="5" 
                     
                     ><%= locals.oldData ? locals.oldData.descripcion : null %></textarea>
-                      
+                    <p class="errors"></p>
                     <% if (locals.errors && errors.descripcion) { %>
                         <div class="text-danger">
                             <%= errors.descripcion.msg %> 
@@ -90,7 +90,7 @@
                     <label for="imagen">Selecciona una imagen</label>
                     <input class="rellenoAdd" type="file" name="imagen" id="imagen" 
                     value="<%= locals.oldData ? oldData.avatar : null %>" >
-                      
+                    <p class="errors"></p>
                     <% if (locals.errors && errors.imagen) { %>
                         <div class="text-danger">
                             <%= errors.imagen.msg %> 
@@ -112,7 +112,7 @@
                         </option>
                         <% } %>
                     </select>
-                      
+                    <p class="errors"></p>
 
                     <% if (locals.errors && errors.cuotas) { %>
                         <div class="text-danger">
@@ -128,7 +128,7 @@
                     id="stock" 
                     value="<%= locals.oldData ? oldData.stock : null %>"
                     >
-                      
+                    <p class="errors"></p>
                     <% if (locals.errors && errors.stock) { %>
                         <div class="text-danger">
                             <%= errors.stock.msg %> 
@@ -143,7 +143,7 @@
                     id="stockMinimo" 
                     value="<%= locals.oldData ? oldData.stockMinimo : null %>"
                     >
-                      
+                    <p class="errors"></p>
                     <% if (locals.errors && errors.stockMinimo) { %>
                         <div class="text-danger">
                             <%= errors.stockMinimo.msg %> 
@@ -158,7 +158,7 @@
                     id="stockMaximo" 
                     value="<%= locals.oldData ? oldData.stockMaximo : null %>"
                     >
-                      
+                    <p class="errors"></p>
                     <% if (locals.errors && errors.stockMaximo) { %>
                         <div class="text-danger">
                             <%= errors.stockMaximo.msg %> 
@@ -175,7 +175,7 @@
                             </option>
                             <% } %>
                     </select>
-                      
+                    <p class="errors"></p>
                     <% if (locals.errors && errors.secciones) { %>
                         <div class="text-danger">
                             <%= errors.secciones.msg %> 
@@ -199,7 +199,7 @@
 
             
             
-                  
+            <p class="errors"></p>
                     <% if (locals.errors && errors.visualizacion) { %>
                         <div class="text-danger">
                             <%= errors.visualizacion.msg %> 
@@ -213,7 +213,7 @@
             </div>
         </main>
     </div>
-    
+    <script src="/js/productAddValidaciones.js"></script>
     <%- include('../partials/footer') %> 
 </body>
 

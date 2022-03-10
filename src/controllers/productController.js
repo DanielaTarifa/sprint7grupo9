@@ -56,26 +56,50 @@ const productController={
     
     },
     create:(req,res)=>{
-        console.log(req.file.filename)
-            Products.create({
-                name:req.body.nombre,
-                description:req.body.descripcion,
-                duesId:req.body.cuotas,
-                price:req.body.precio,
-                img:req.file.filename,
-                visibility:req.body.visualizacion,
-                stock:req.body.stock,
-                stockMin:req.body.stockMinimo,
-                stockMax:req.body.stockMaximo,
-                sectionId:req.body.secciones,
-                categoryId:req.body.categorias,
+        
+
+        const resultValidation= validationResult(req);//resultValidation no es un array, sino q un objeto en donde esta error yq es un array.
+        //return res.send(resultValidation.mapped()) //esta vea es la q convierte en objetos a los q antes eran indices dentre de el array errors
+
+        if(resultValidation.errors.length > 0){
+            let promesaCuotas= Numbersofinstallments.findAll();
+            let promesaSections= Sections.findAll();
+            let promesaCategories= Categories.findAll();
+            
+            Promise.all([promesaCuotas, promesaSections, promesaCategories])
+            .then(function([ cuotas, secciones, categorias]) {
+                
+                res.render('./products/productAdd', {cuotas:cuotas, secciones:secciones, categorias:categorias, 
+                    errors:resultValidation.mapped(), 
+                    oldData:req.body,
+                })
             })
             
-        .then(()=>{
-            res.redirect('/');
-        })
-            
-        .catch(error => res.send(error))
+    
+        }else{
+        
+                //console.log(req.file.filename)
+            Products.create({
+                    name:req.body.nombre,
+                    description:req.body.descripcion,
+                    duesId:req.body.cuotas,
+                    price:req.body.precio,
+                    img:req.file.filename,
+                    visibility:req.body.visualizacion,
+                    stock:req.body.stock,
+                    stockMin:req.body.stockMinimo,
+                    stockMax:req.body.stockMaximo,
+                    sectionId:req.body.secciones,
+                    categoryId:req.body.categorias,
+                })
+                
+            .then(()=>{
+                res.redirect('/allproducts');
+            })
+                
+            .catch(error => res.send(error))
+        }
+
     },
     
     edit:(req, res)=> {
@@ -94,6 +118,30 @@ const productController={
     },
 
     update:(req, res)=> {
+        
+        const resultValidation= validationResult(req);//resultValidation no es un array, sino q un objeto en donde esta error yq es un array.
+        //return res.send(resultValidation.mapped()) //esta vea es la q convierte en objetos a los q antes eran indices dentre de el array errors
+
+        if(resultValidation.errors.length > 0){
+            let pedidoProducto=Products.findByPk(req.params.id);
+
+            let promesaCuotas= Numbersofinstallments.findAll();
+            let promesaSections= Sections.findAll();
+            let promesaCategories= Categories.findAll();
+            
+            Promise.all([pedidoProducto, promesaCuotas, promesaSections, promesaCategories])
+            .then(function([ producto, cuotas, secciones, categorias]) {
+                
+                res.render('./products/editProduct', {producto:producto, cuotas:cuotas, secciones:secciones, categorias:categorias, 
+                    errors:resultValidation.mapped(),
+                    oldData:req.body
+                })})
+            .catch(error => res.send(error))
+    
+    
+        }else {
+
+        
         let unProducto=Products.findByPk(req.params.id);
         //console.log(req.file.filename)
 
@@ -118,7 +166,7 @@ const productController={
             res.redirect("/allproducts")
         })
         .catch(error => res.send(error))
-
+    }
     },
     detail:(req,res)=>{
         let pedidoProducto= Products.findByPk(req.params.id);
