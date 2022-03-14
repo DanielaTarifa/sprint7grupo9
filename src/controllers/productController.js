@@ -78,7 +78,7 @@ const productController={
     
         }else{
         
-                //console.log(req.file.filename)
+
             Products.create({
                     name:req.body.nombre,
                     description:req.body.descripcion,
@@ -143,7 +143,7 @@ const productController={
 
         
         let unProducto=Products.findByPk(req.params.id);
-        //console.log(req.file.filename)
+
 
         Products.update({
             name:req.body.nombre,
