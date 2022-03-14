@@ -22,7 +22,7 @@ const usersController={
     listar:(req,res)=>{//funciona (solo funciona cuando no estas logeado 0.0)
         Users.findAll()
         .then(listarUsuarios => {
-            res.render('users/listar', {listarUsuarios: listarUsuarios })
+            res.render('users/listar', {listarUsuarios: listarUsuarios})
         });
 
     },
@@ -138,7 +138,7 @@ const usersController={
     },
 
     edit: (req, res)=> {
-        res.render('users/editarusuario',c);
+        res.render('users/editarusuario',{user: req.session.userLogged});
     },
 
     update: (req, res)=>{
@@ -159,8 +159,10 @@ const usersController={
         })
         .then( () => {
                 
-                console.log(req.session)
-                
+
+                req.session.user = req.body.nombre;
+                req.session.email = req.body.email;
+            
                 res.redirect("/perfil");
         })
         
