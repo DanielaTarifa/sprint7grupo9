@@ -142,33 +142,53 @@ const usersController={
     },
 
     update: (req, res)=>{
+        const resultValidation = validationResult(req);
 
-        let unProducto= Users.findByPk(req.params.id)
+        if (resultValidation.errors.length > 0) {
+            return res.render('users/editarusuario', {
+                errors: resultValidation.mapped(),
+                oldData: req.body,
+                user: req.session.userLogged
+            })
+        }else{
+
+
+            Users.findByPk(req.params.id)//este es para llamar a los datos viejo, y el parametro 'unProducto' es para usarlo en plan la imagen
+                .then(function(unUsuario){
         
-        Users.update({
-            name: req.body.nombre,
-            lastname: req.body.apellido,
-            userName: req.body.nombreDeUsuario,
-            email: req.body.email,
-            cel: req.body.tel,
-            avatar:req.file!=null?req.file.filename:unProducto.avatar,
-        },{
-            where: { id: req.params.id,
-
-            }
-        })
-        .then( () => {
-                
-
-                req.session.user = req.body.nombre;
-                req.session.email = req.body.email;
-            
-                res.redirect("/perfil");
-        })
+                    Users.update({
+                        name: req.body.nombre,
+                        lastname: req.body.apellido,
+                        userName: req.body.nombreDeUsuario,
+                        email: req.body.email,
+                        cel: req.body.tel,
+                        avatar:req.file!=null?req.file.filename:unUsuario.avatar,
+                    },{
+                        where: { id: req.params.id,
+                        }
+                    })
+                    .then( () => {//aca actualizo session
+                        Users.findByPk(req.params.id)//LLAMO A  LOS DATOS ACTUALIZADOS, recien ahora puedo hacer la actualizacion a session,este 2do es para llamar con los datos actualizados, q paso por el update
         
-        .catch( error => {
-            return res.send(error);
-        });
+                        .then(function (Users) {
+                            req.session.userLogged = Users
+        
+                            res.redirect("/perfil");
+                        })
+                            
+                            
+                    })
+                    
+                    .catch( error => {
+                        return res.send(error);
+                    });
+        
+                })
+
+        }
+
+    
+        
     },
     
     

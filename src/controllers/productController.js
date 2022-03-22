@@ -7,7 +7,7 @@ const path = require('path');
 let db = require('../database/models');
 const sequelize = db.sequelize;
 const { Op, where } = require("sequelize");
-const { buildCheckFunction } = require('express-validator');
+const { buildCheckFunction, validationResult } = require('express-validator');
 const { createConnection } = require('net');
 
 //una forma de llamar a modelos de la carpeta models
@@ -78,7 +78,6 @@ const productController={
     
         }else{
         
-
             Products.create({
                     name:req.body.nombre,
                     description:req.body.descripcion,
@@ -142,30 +141,32 @@ const productController={
         }else {
 
         
-        let unProducto=Products.findByPk(req.params.id);
+        Products.findByPk(req.params.id)//vas a la base de datos y la traes, en plan para q se guardey unq aparesca selecione una imagen por detra ya va  a estar guardado
 
-
-        Products.update({
-            name:req.body.nombre,
-            description:req.body.descripcion,
-            duesId:req.body.cuotas,
-            price:req.body.precio,
-            img:req.file!=null?req.file.filename:unProducto.img,
-            visibility:req.body.visualizacion,
-            stock:req.body.stock,
-            stockMin:req.body.stockMinimo,
-            stockMax:req.body.stockMaximo,
-            sectionId:req.body.seccion,
-            categoryId:req.body.categoria,
-        },{
-            where:{
-                id:req.params.id
-            }
+        .then((unProducto)=>{
+            Products.update({
+                name:req.body.nombre,
+                description:req.body.descripcion,
+                duesId:req.body.cuotas,
+                price:req.body.precio,
+                img:req.file!=null?req.file.filename:unProducto.img,
+                visibility:req.body.visualizacion,
+                stock:req.body.stock,
+                stockMin:req.body.stockMinimo,
+                stockMax:req.body.stockMaximo,
+                sectionId:req.body.seccion,
+                categoryId:req.body.categoria,
+            },{
+                where:{
+                    id:req.params.id
+                }
+            })
+            .then(()=>{
+                res.redirect("/allproducts")
+            })
+            .catch(error => res.send(error))
         })
-        .then(()=>{
-            res.redirect("/allproducts")
-        })
-        .catch(error => res.send(error))
+        
     }
     },
     detail:(req,res)=>{

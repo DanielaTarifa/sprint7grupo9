@@ -149,13 +149,10 @@ window.addEventListener("load", function () {
       
     let feedback = "";
 
-    let feedbackElement = imagen.nextElementSibling;
-
-    if (imagen.value.trim() == "") {
-        feedback = "Debes elegir una foto de perfil"
-    }else if (imagen.file != ".jpg", ".jpeg", ".png", ".gif") {
-        feedback = "El formato del archivo debe ser válido (JPG, JPEG, PNG, GIF)"
-    }
+    let feedbackElement = imagen.nextElementSibling
+    if (imagen.files[0].type != 'image/jpeg' && imagen.files[0].type !='image/png' && imagen.files[0].type !='image/gif' && imagen.files.length > 0) {
+      feedback = "El formato del archivo debe ser válido (JPG, JPEG, PNG, GIF)"
+  }
 
     if (feedback) {
         imagen.classList.add('error-input');

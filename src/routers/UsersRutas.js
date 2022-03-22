@@ -6,6 +6,7 @@ const path = require('path');
 //midelewares
 const uploadFile = require('../middlewares/multerMiddleware');
 const {validaciones} =require('../middlewares/validatorMiddleware');
+const {validacionesEditPerfil} =require('../middlewares/editPerfilValidacion');
 const authMiddleware = require('../middlewares/authMiddleware');
 const guestMiddleware = require('../middlewares/guestMiddleware');
 const userLoggedMiddleware = require('../middlewares/userLoggedMiddleware');
@@ -41,6 +42,6 @@ router.post('/register', uploadFile.single('avatar'), validaciones, usersControl
 router.get('/borrar/:id', guestMiddleware ,usersController.delete);
 
 router.get('/perfil/edit/:id', usersController.edit)//detalle
-router.put('/perfil/edit/:id', uploadFile.single('avatar'),usersController.update)
+router.put('/perfil/edit/:id', uploadFile.single('avatar'), validacionesEditPerfil,usersController.update)
 
 module.exports= router;

@@ -19,6 +19,7 @@ var upload = multer({ storage: storage })
 
 //middleware
 const validacionesCreate = require('../middlewares/creacionProdtValidacionMiddle.js');
+const validacionesEditPrduct = require('../middlewares/editarProductValidacionMiddle.js');
 
 
 //home
@@ -42,7 +43,7 @@ router.get('/allproducts',productController.listAdmi);//listado admi-alls
 router.get('/todos',productController.listClient);//listado admi-alls
 //modificar
 router.get('/editarProducto/:id', productController.edit);//editar
-router.put('/editarProducto/:id',upload.single("imagen"), validacionesCreate, productController.update);//actualizar
+router.put('/editarProducto/:id',upload.single("imagen"), validacionesEditPrduct, productController.update);//actualizar
 //eliminar
 router.delete('/borrar/:id',productController.delete);
 

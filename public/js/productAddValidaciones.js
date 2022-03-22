@@ -145,6 +145,32 @@ window.addEventListener("load", function () {
 
     let feedbackElement = imagen.nextElementSibling;
 
+    
+    if (imagen.files.length == 0) {
+      feedback = "Debes elegir una foto de perfil"
+    }else if (imagen.files[0].type != 'image/jpeg' && imagen.files[0].type !='image/png' && imagen.files[0].type !='image/gif') {
+      feedback = "El formato del archivo debe ser válido (JPG, JPEG, PNG, GIF)"
+    }
+
+
+    if (feedback) {
+        imagen.classList.add('error-input');
+        errors.imagen = feedback;
+    }else {
+        imagen.classList.remove('error-input');
+        delete errors.imagen;
+    }
+
+    feedbackElement.innerText = feedback;
+
+  }
+
+/**let  imagenValidator = () => {
+      
+    let feedback = "";
+
+    let feedbackElement = imagen.nextElementSibling;
+
     if (imagen.value.trim() == "") {
         feedback = "Debes elegir una foto de perfil"
     }else if (imagen.file != ".jpg", ".jpeg", ".png", ".gif") {
@@ -162,6 +188,7 @@ window.addEventListener("load", function () {
     feedbackElement.innerText = feedback;
 
   }
+ */
 
 
     let  coutasValidator = () => {

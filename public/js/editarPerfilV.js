@@ -17,9 +17,7 @@ let firstNameValidator = () => {
     let feedbackElement = firstName.nextElementSibling;
 
 
-    if (firstName.value.trim() == "") {
-        feedback = "El nombre no puede estar vacío"
-    }else if (firstName.value.length < 2) {
+    if (firstName.value.length < 2) {
         feedback = "El nombre no puede tener menos de 2 caracteres"
     }
 
@@ -50,7 +48,7 @@ let  lastNameValidator = () => {
     }
 
     if (feedback) {
-    lastName .classList.add('error-input');
+    lastName.classList.add('error-input');
         errors.lastName  = feedback;
     }else {
 lastName.classList.remove('error-input');
@@ -110,9 +108,7 @@ let  avatarValidator = () => {
 
     let feedbackElement = uAvatar.nextElementSibling;
 
-    if (uAvatar.files.length == 0) {
-        feedback = "Debes elegir una foto de perfil"
-    }else if (uAvatar.files[0].type != 'image/jpeg' && uAvatar.files[0].type !='image/png' && uAvatar.files[0].type !='image/gif') {
+    if (uAvatar.files[0].type != 'image/jpeg' && uAvatar.files[0].type !='image/png' && uAvatar.files[0].type !='image/gif' && uAvatar.files.length > 0) {
         feedback = "El formato del archivo debe ser válido (JPG, JPEG, PNG, GIF)"
     }
 
