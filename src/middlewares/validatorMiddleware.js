@@ -1,7 +1,6 @@
 const { body } = require('express-validator');
 const path = require('path');
-
-
+let db = require('../database/models');
 
 module.exports={
     validaciones:[
@@ -10,8 +9,17 @@ module.exports={
         body('nombreDeUsuario').notEmpty().withMessage('Debes escribir un nombre de usuario'),
     
         body('email')
-            .notEmpty().withMessage('Debes escribir tu correo electrónico').bail()
-            .isEmail().withMessage('Debes escribir un formato de correo electrónico válido'),
+	.notEmpty().withMessage('Debe escribir un correo electrónico').bail()
+	.isEmail().withMessage('Debe ingresar un correo válido'),
+	body("email", "Este email ya se encuentra en uso").custom((value) => {
+        return db.Users
+            .findOne({ where: { email: value } })
+            .then((usuario) => {
+            if (usuario) {
+                return Promise.reject();
+            }
+            })
+    }),
         
         body('avatar').custom((value, {req})=>{
     
@@ -42,13 +50,13 @@ module.exports={
             .isLength({min:8}).withMessage('La contraseña ser más larga').bail()
             .custom((value, { req }) => {
                 if (value !== req.body.password) {
-                  throw new Error('La contraseña de confirmación deben coincidir con la contraseña');
+                throw new Error('La contraseña de confirmación deben coincidir con la contraseña');
                 }
             
                 // Indica el éxito de este validador personalizado síncrono
     
                 return true;
-              })
+            })
             
             ,
     

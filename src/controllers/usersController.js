@@ -19,7 +19,7 @@ const usersController={
         return res.render('users/register')
     },
 
-    listar:(req,res)=>{//funciona (solo funciona cuando no estas logeado 0.0)
+    listar:(req,res)=>{
         Users.findAll()
         .then(listarUsuarios => {
             res.render('users/listar', {listarUsuarios: listarUsuarios})
@@ -46,18 +46,21 @@ const usersController={
         }
 
     //tiene que salir un cartel q ya esta en uso el mail si se repite 2 veces//
-    let userInDB = db.Users.findAll({where: {email: req.body.email}});
+    /*let userInDB =  db.Users.findOne ({where: {email: req.body.email}});
+
+    console.log(userInDB);
+    console.log(userInDB instanceof Users);
         
-        if(!userInDB){
+        if(userInDB){
             return res.render('./users/register',{
                 errors:{
                     email :{
                         msg: 'Este email ya esta registrado'
                     }
                 },
-                oldData:req.body,
-            });
-        };
+                oldData:req.body
+            })
+        };*/
 
         Users.create({
             name: req.body.nombre,
@@ -75,7 +78,9 @@ const usersController={
             .catch( error => {
                 return res.send(error);
             });
-        
+
+            
+
         //crea nuevos usuarios en json/ 
         /*let userToCreate= {
             ...req.body,
