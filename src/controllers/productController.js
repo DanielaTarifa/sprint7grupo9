@@ -23,7 +23,7 @@ const productController={
         let productos =Products.findAll()
         .then(function(productos){
             res.render('./products/index',{productos:productos,mil:toThousand})
-        })
+        }).catch(error => res.send(error))
         
     },
     listAdmi:(req,res)=>{//listado para los admi
@@ -73,7 +73,7 @@ const productController={
                     errors:resultValidation.mapped(), 
                     oldData:req.body,
                 })
-            })
+            }).catch(error => res.send(error))
             
     
         }else{
@@ -208,7 +208,7 @@ const productController={
         .then( products => {
             let filtrados = products.filter(e => e.name.toLowerCase().includes(search) || e.Category.name.toLowerCase().includes(search));
             res.render('./products/categories', { filtrados})
-        })
+        }).catch(error => res.send(error))
     },
 
     ayuda: (req, res) => { 
