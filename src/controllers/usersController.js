@@ -11,8 +11,8 @@ const { Op } = require("sequelize");
 
 
 //una forma de llamar a modelos de la carpeta models
-const Users = db.Users;
-const Rols = db.Rols;
+const Users = db.User;
+const Rols = db.Rol;
  
 const usersController={
     register:(req,res)=>{

@@ -11,10 +11,10 @@ const { buildCheckFunction, validationResult } = require('express-validator');
 const { createConnection } = require('net');
 
 //una forma de llamar a modelos de la carpeta models
-const Products = db.Products;
-const Categories = db.Categories;
-const Numbersofinstallments = db.Numbersofinstallments;
-const Sections = db.Sections;
+const Products = db.Product;
+const Categories = db.Category;
+const Numbersofinstallments = db.Numbersofinstallment;
+const Sections = db.Section;
 
 const productController={
     
@@ -202,7 +202,7 @@ const productController={
     
         let search = req.query.search.toLowerCase()
         
-        db.Products.findAll({
+        db.Product.findAll({
             include: ['Category']
         })
         .then( products => {
