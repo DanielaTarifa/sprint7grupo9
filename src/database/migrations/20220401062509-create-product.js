@@ -15,11 +15,7 @@ module.exports = {
         type: Sequelize.STRING
       },
       duesId: {
-        type: Sequelize.INTEGER,
-        references: {
-          model: 'numbersofinstallments',
-          key: 'id'
-        }
+        type: Sequelize.INTEGER
       },
       price: {
         type: Sequelize.INTEGER
@@ -40,18 +36,10 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       sectionId: {
-        type: Sequelize.INTEGER,
-        references: {
-          model: 'sections',
-          key: 'id'
-        }
+        type: Sequelize.INTEGER
       },
       categoryId: {
-        type: Sequelize.INTEGER,
-        references: {
-          model: 'categories',
-          key: 'id'
-        }
+        type: Sequelize.INTEGER
       },
       createdAt: {
         allowNull: false,
