@@ -206,7 +206,7 @@ const productController={
             include: ['category']
         })
         .then( products => {
-            let filtrados = products.filter(e => e.name.toLowerCase().includes(search) || e.Category.name.toLowerCase().includes(search));
+            let filtrados = products.filter(e => e.name.toLowerCase().includes(search) || e.category.name.toLowerCase().includes(search));
             res.render('./products/categories', { filtrados})
         }).catch(error => res.send(error))
     },
