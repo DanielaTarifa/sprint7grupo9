@@ -27,7 +27,7 @@
 
             <div class="products">
                 <%  let i=0%>
-                <% for(let i =0; i < 8; i++){ %>
+                <% for(let i =0; i < productos.length; i++){ %> <!--cambiar productos.length por 8-->
                     <!--let (uno de esos muchos, callback) of (muchos)-->
                     <% if (productos[i].visibility == 1 ) { %>
                         <% if (productos[i].sectionId == 2) { %>

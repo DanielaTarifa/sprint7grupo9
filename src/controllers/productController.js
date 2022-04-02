@@ -203,7 +203,7 @@ const productController={
         let search = req.query.search.toLowerCase()
         
         db.Product.findAll({
-            include: ['Category']
+            include: ['category']
         })
         .then( products => {
             let filtrados = products.filter(e => e.name.toLowerCase().includes(search) || e.Category.name.toLowerCase().includes(search));
