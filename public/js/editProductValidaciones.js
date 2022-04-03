@@ -123,7 +123,7 @@ window.addEventListener("load", function () {
       // Si el nombre no valida sobreescribo feedback
       if (descripcion.value.trim() == "") {
           feedback = "La descripcion no puede estar vacio"
-      }else if (descripcion.value.length < 10) {
+      }else if (descripcion.value.length < 20) {
           feedback = "La descripcion no puede tener menos de 20 caracteres"
       }
 
