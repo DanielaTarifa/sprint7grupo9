@@ -123,7 +123,7 @@ window.addEventListener("load", function () {
       // Si el nombre no valida sobreescribo feedback
       if (descripcion.value.trim() == "") {
           feedback = "La descripcion no puede estar vacio"
-      }else if (descripcion.value.length < 20) {
+      }else if (descripcion.value.length < 10) {
           feedback = "La descripcion no puede tener menos de 20 caracteres"
       }
 
@@ -228,19 +228,19 @@ window.addEventListener("load", function () {
 
 
     let  stockMinimoValidator = () => {
-      // Declaro string vacio que contendra mensaje de error
+   
       let feedback = "";
-      // Almaceno elemento hermano(<p>) a input nombre, hay un p al final
+    
       let feedbackElement = stockMinimo.nextElementSibling;
 
-      // Si el nombre no valida sobreescribo feedback
+
       if (stockMinimo.value.trim() == "") {
           feedback = "El stock no puede estar vacio"
       }else if (stockMinimo.value.length < 1) {//T-T
           feedback = "El stock debe tener al menos 1 disponible"
       }
 
-      // Si existe error se almacena en objeto errors
+  
       if (feedback) {
         stockMinimo .classList.add('error-input');
           errors.stockMinimo  = feedback;
@@ -249,9 +249,6 @@ window.addEventListener("load", function () {
           delete errors.stockMinimo ;
       }
 
-      // Se imprime string de error en vista
-      // Utilizo el <p> hermano para publicar el error
-      //feedbackElement es el siguiente hermano, es decir el P
       feedbackElement.innerText = feedback;
     }
 
@@ -259,19 +256,19 @@ window.addEventListener("load", function () {
 
 
     let  stockMaximoValidator = () => {
-      // Declaro string vacio que contendra mensaje de error
+     
       let feedback = "";
-      // Almaceno elemento hermano(<p>) a input nombre, hay un p al final
+      
       let feedbackElement = stockMaximo.nextElementSibling;
 
-      // Si el nombre no valida sobreescribo feedback
+    
       if (stockMaximo.value.trim() == "") {
           feedback = "El stock no puede estar vacio"
-      }else if (stockMaximo.value.length < 2) {
-          feedback = "El stock no puede tener menos de 2 caracteres"
+      }else if (stockMaximo.value.length < 1) {
+          feedback = "El stock no puede tener menos de 1 caracteres"
       }
 
-      // Si existe error se almacena en objeto errors
+    
       if (feedback) {
         stockMaximo .classList.add('error-input');
           errors.stockMaximo  = feedback;
@@ -280,9 +277,7 @@ window.addEventListener("load", function () {
           delete errors.stockMaximo ;
       }
 
-      // Se imprime string de error en vista
-      // Utilizo el <p> hermano para publicar el error
-      //feedbackElement es el siguiente hermano, es decir el P
+ 
       feedbackElement.innerText = feedback;
     }
 
@@ -291,16 +286,15 @@ window.addEventListener("load", function () {
 
     let  seccionesValidator = () => {
       let feedback = "";
-      // Almaceno elemento hermano(<p>) a input nombre, hay un p al final
+     
       let feedbackElement = secciones.nextElementSibling;
 
-      // Si el nombre no valida sobreescribo feedback
       if (secciones.value == "") {
           feedback = "Debes selecionar una sección"
           feedback.select= feedback
       }
 
-      // Si existe error se almacena en objeto errors
+      
       if (feedback) {
         secciones.classList.add('error-input');
         errors.secciones  = feedback;
@@ -309,9 +303,7 @@ window.addEventListener("load", function () {
           delete errors.secciones ;
       }
 
-      // Se imprime string de error en vista
-      // Utilizo el <p> hermano para publicar el error
-      //feedbackElement es el siguiente hermano, es decir el P
+     
       feedbackElement.innerText = feedback;
     }
 
@@ -320,16 +312,16 @@ window.addEventListener("load", function () {
 
     let  visualizacionValidator = () => {
       let feedback = "";
-      // Almaceno elemento hermano(<p>) a input nombre, hay un p al final
+      
       let feedbackElement = visualizacion.nextElementSibling;
 
-      // Si el nombre no valida sobreescribo feedback
+   
       if (visualizacion.value == "") {
           feedback = "Debes selecionar una visualizacion"
           feedback.checked= feedback
       }
 
-      // Si existe error se almacena en objeto errors
+      
       if (feedback) {
         visualizacion.classList.add('error-input');
         errors.visualizacion  = feedback;
@@ -338,9 +330,6 @@ window.addEventListener("load", function () {
           delete errors.visualizacion ;
       }
 
-      // Se imprime string de error en vista
-      // Utilizo el <p> hermano para publicar el error
-      //feedbackElement es el siguiente hermano, es decir el P
       feedbackElement.innerText = feedback;
     }
 
